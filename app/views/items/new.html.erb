@@ -1,0 +1,43 @@
+<div class='container'>
+	<div class="row">
+		 <div  class="col-lg-4 col-centered">
+		 	
+		 	 <%= form_for @item, url: auction_new_path, method: :post do |f| %>
+		 	 	<% @item.errors.full_messages.each do |message| %>
+        <li class="text-danger"><%= message %></li>
+    		<% end %>
+
+		 	 		<div class="form-group">
+		 	 		<%= f.label :name %>
+		 	 	 	<%= f.text_field :name, class: 'form-control' %>
+		 	 	 	</div>
+
+		 	 	 	<div class="form-group">
+		 	 	 	<%= f.label :description %>
+  				<%= f.text_field :description, class: 'form-control' %>
+  				</div>
+
+					<div class="form-group">
+          <%= f.label :opening_price %>
+          <%= f.number_field :opening_price, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+          <%= f.label :price_step %>
+          <%= f.number_field :price_step, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+          <%= f.label :closing_time %>
+          <%= f.number_field :closing_time, class: 'form-control', placeholder: 'Hour number' %>
+          </div>
+
+  				<div class="form-group">
+  				<%= f.label :Image %>
+  				<%= f.text_field :image, class: 'form-control' %>
+  				</div>
+  				<%= f.submit "Create", class: 'btn btn-default btn-primary' %>
+		 	 <% end %>
+		 </div>
+	</div>
+</div>

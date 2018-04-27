@@ -1,0 +1,19 @@
+<div id="itemTemplate">
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="panel panel-default panel-pet">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= item.name %></h3>
+          </div>
+          <div class="panel-body">
+            <img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 100%;" src="<%= item.image %>" data-holder-rendered="true">
+            <br/><br/>
+            <strong>Details</strong>: <span class="pet-breed"><%= item.description %></span><br/>
+            <strong>Start Price</strong>: <span class="pet-age"><%= item.opening_price %> ETH</span><br/>
+            <strong>Address</strong>: <span class="pet-location"><%= item.address %></span><br/><br/>
+            <button class="btn btn-default btn-adopt" type="button" data-id="0">Bid</button>
+          </div>
+          <div id='timeCounter' class="panel-footer timer">Ends in 2h:33m:44s</div>
+        </div>
+    </div>
+</div>
+dfssdfsdsfd

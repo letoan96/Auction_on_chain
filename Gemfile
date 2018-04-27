@@ -5,7 +5,21 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "angular-rails-templates"
+source "https://rails-assets.org" do
+  gem "rails-assets-angular", "~> 1.5.5"
+  gem "rails-assets-angular-ui-router", "1.0.3"
+  gem "rails-assets-angular-material", "1.1.6"
+  gem "rails-assets-angular-moment"
+  gem "rails-assets-angular-cookies", "1.5.11"
+  gem "rails-assets-ng-file-upload"
+end
+
+gem "active_model_serializers", "~> 0.10.0"
+gem 'jquery-rails'
+gem 'bootstrap-sass', '~> 3.3.7'
 gem 'devise'
+gem 'ethereum.rb'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
 # Use postgresql as the database for Active Record
@@ -39,6 +53,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'pry'
 end
 
 group :development do

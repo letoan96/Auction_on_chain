@@ -1,0 +1,51 @@
+<div ng-repeat="item in items track by $index">
+  <div  class="col-sm-6 col-md-4 col-lg-3">
+    <div id="item-{{item.id}}" class="panel panel-default" >
+      <div class="panel-heading">
+        <h3 class="panel-title">{{item.name}}</h3>
+      </div>
+      <div class="panel-body">
+        <img alt="140x140" class="img-rounded img-center" style="width: 100%;" ng-src="{{ item.image }}">
+        <br/><br/>
+        <strong>Details</strong>: <span class="details">{{ item.description }}</span><br/>
+        <strong>Current Price</strong>: <span class="price">{{ item.opening_price }} ETH</span><br/>
+        <strong>Price Step</strong>: <span class="step">{{ item.price_step }} ETH</span><br/>
+        <strong>Address</strong>: <span class="address">{{item.address | limitTo: 20 }}{{item.address.length > 20 ? '...' : ''}}</span><br/><br/>
+        <input class="btn btn-default btn-adopt" type="button" value="Bid" id="btn-bid-{{item.id}}" ng-click="openBidForm(item)" ng-disabled="{{item.is_ended ? true : false }}" >
+        <input class="btn btn-danger btn-adopt" type="button" value="Withdraw" id="btn-withdraw-{{item.id}}" ng-click="withdraw(item)" >
+        <input class="btn btn-danger btn-adopt" type="button" value="End" id="btn-end-{{item.id}}" ng-click="end(item)" ng-disabled="{{item.is_ended ? true : false }}" >
+
+
+      </div>
+      <div id='timeCounter' class="panel-footer timer">Ends in {{ item.time_left["hours"] }}h {{ item.time_left["minutes"] }}m {{ item.time_left["seconds"] }}s</div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="bid-modal-{{item.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <center><h3 class="modal-title">Bid</h3><center>
+          <h4 class="error transaction-err-{{item.id}}"></h4>
+          <span><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button></span>
+        </div>
+        <div class="modal-body">
+          <strong>Contract address :</strong>  <span class="details">{{ item.address }}</span><br/>
+          <strong>Current highest Price : </strong> <span class="price">{{ item.opening_price }} ETH</span><br/>
+          <strong>Your current bid price: </strong> {{ biddedAmount }} ETH<br>
+          <strong>Amount: </strong>
+          <input type="text" class="form-control" aria-label="Amount" ng-model="amount" >
+          <strong>Total : </strong><span>{{ amount * 1 + biddedAmount }}</span>
+        </div>
+        <div class="modal-footer">
+          <center><button type="button" class="btn btn-primary" ng-click="bid(item,amount,biddedAmount)">Confirm</button></center>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

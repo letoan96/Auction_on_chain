@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  get 'static_pages/index'
+
+  get 'auction/new', to: 'items#new'
+  post 'auction/new' ,to: 'items#create'
+  namespace :api do
+  	namespace :v1 do
+  		resources :items, only: [:index, :update]
+  	end
+  end
 
   devise_for :users
   root 'static_pages#index'

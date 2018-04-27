@@ -1,2 +1,9 @@
-<h1>Welcome to Auction on Chain</h1>
-<p>Find me in app/views/static_pages/index.html.erb</p>
+<div class="container" ng-app="auctionApp" ng-controller="mainCtrl" ng-init="init()" >
+	<div class="row">
+		<center><%= link_to "Sell your item", auction_new_path,  class: "btn btn-success" %></center>
+	</div>
+	<div id="petsRow" class="row">
+		<div data-ng-include="'_item.html'"></div>      
+	</div>
+</div>
+
